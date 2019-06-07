@@ -16,6 +16,7 @@ subpower <- subpower %>% select(-Date, -Time,date_time, everything())
 subpower$date_time <- as.POSIXct(subpower$date_time)
 head(subpower)
 
+# put multiple graphs in a single plot
 par(mfrow=c(2,2),mar=c(4,4,2,1), oma=c(0,0,2,0))
 plot(subpower$date_time, subpower$Global_active_power, type="l", 
      ylab="Global Active Power", xlab="", col="black")
