@@ -16,14 +16,17 @@ subpower <- subpower %>% select(-Date, -Time,date_time, everything())
 subpower$date_time <- as.POSIXct(subpower$date_time)
 head(subpower)
 
+# plotting 3 columns of data on the same x-axis
 plot(subpower$date_time, subpower$Sub_metering_1 , type="l", ylab="Global Active Power (kilowatts)", xlab="", col="black")
 lines(subpower$date_time, subpower$Sub_metering_2 , type="l", ylab="Global Active Power (kilowatts)", xlab="", col="red")
 lines(subpower$date_time, subpower$Sub_metering_3 , type="l", ylab="Global Active Power (kilowatts)", xlab="", col="blue")
 
+# adjusted legends
 op <- par(cex = 1)
 legend("topright", 
        col=c("black", "red", "blue"), cex=0.6, lty = 1, legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), y.intersp = 0.5, pt.cex = 0.5, ncol=1)
 
+# Add the PNG file and R code file
 dev.copy(png,"plot3.png", width=480, height=480)
 dev.off()
 
